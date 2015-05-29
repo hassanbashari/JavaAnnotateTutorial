@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package javaannotatetutorial;
+package CustomAnnotated;
 
 import java.lang.annotation.*;
 

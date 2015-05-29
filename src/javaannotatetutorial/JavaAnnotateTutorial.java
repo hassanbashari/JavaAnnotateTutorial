@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package javaannotatetutorial;
 
-import CustomAnnotated.AnnotationForClass;
-import CustomAnnotated.FirstTuorial;
+import CustomAnnotated.*;
+import CustomAnnotated.inheritance.AnnotatedSubClass;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
@@ -35,7 +35,25 @@ public class JavaAnnotateTutorial {
             System.out.println( annotation );
         }
         // the same for all methods of the class
-        
+        for( Method method : FirstToturialClass.getDeclaredMethods() ){
+            if( method.isAnnotationPresent( AnnotationForFunction.class ) ){
+                Annotation annotation = method.getAnnotation(AnnotationForFunction.class );
+                System.out.println( annotation );
+            }
+        }
+        for( Field field : FirstToturialClass.getDeclaredFields() ){
+            if( field.isAnnotationPresent( AnnotationForField.class ) ){
+                Annotation annotation = field.getAnnotation(AnnotationForField.class );
+                System.out.println( annotation );
+            }
+        }
+        Class<AnnotatedSubClass> annotatedSubClass = AnnotatedSubClass.class;
+        Annotation[] annotationsList2 = annotatedSubClass.getAnnotations();
+        System.out.println("The start of annotations of Annotated Subclass");
+        for( Annotation annot : annotationsList2 ){
+            System.out.println( annot );
+        }
+        System.out.println("END");
     }
     
 }
